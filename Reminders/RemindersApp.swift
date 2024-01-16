@@ -9,12 +9,14 @@ import SwiftUI
 
 @main
 struct RemindersApp: App {
-    let persistenceController = PersistenceController.shared
-
+    init() {
+        NotificationManager.asaskingForPermissionk()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            MainView()
+                .environment(\.managedObjectContext, CoreDataProvider.shared.persistentContainer.viewContext)
         }
     }
 }
